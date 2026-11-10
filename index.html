@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Before You Vote: Penobscot's Ordinance Gap</title>
+    <style>
+        :root { --bg: #fdfdfd; --text: #222; --accent: #0056b3; --sidebar: #fff; --border: #eaeaea; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; display: flex; min-height: 100vh; line-height: 1.6; background: var(--bg); color: var(--text); }
+        nav { width: 250px; background: var(--sidebar); border-right: 1px solid var(--border); padding: 2rem 1rem; position: fixed; height: 100vh; overflow-y: auto; }
+        nav h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #777; margin-bottom: 1rem; }
+        nav ul { list-style: none; padding: 0; margin: 0; }
+        nav li { margin-bottom: 0.25rem; }
+        nav a { text-decoration: none; color: var(--text); display: block; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.2s; }
+        nav a:hover { background: #f5f5f5; }
+        nav a.active { background: var(--accent); color: #fff; font-weight: 500; }
+        main { margin-left: 280px; padding: 4rem 2rem; max-width: 800px; width: 100%; display: flex; flex-direction: column; }
+        .content-wrapper { flex: 1; }
+        section { display: none; animation: fadeIn 0.3s ease; }
+        section.active { display: block; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.1; font-weight: 700; color: #111; }
+        .subheadline { font-size: 1.3rem; color: #555; font-weight: 500; margin-top: 0; margin-bottom: 1.5rem; line-height: 1.4; }
+        h3 { font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.2rem; color: #111; }
+        .ref-tag { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem; }
+        .ref-tag a { color: var(--accent); text-decoration: none; }
+        .ref-tag a:hover { text-decoration: underline; }
+        p { margin-bottom: 1.5rem; color: #444; }
+        .intro-text { font-size: 1.1rem; color: #333; margin-bottom: 2.5rem; }
+        .official-link { display: inline-block; margin-top: 2rem; padding: 0.75rem 1.5rem; background: #eee; color: #333; text-decoration: none; border-radius: 4px; font-weight: 500; font-size: 0.9rem; }
+        .official-link:hover { background: #e0e0e0; }
+        hr { border: 0; border-top: 1px solid var(--border); margin: 3rem 0; }
+        
+        /* Dynamic Ordinance Viewer Styles */
+        .breadcrumb { margin-bottom: 2rem; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; cursor: pointer; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span.divider { color: #aaa; margin: 0 0.5rem; }
+        .breadcrumb span.current { color: #666; }
+        .ordinance-viewer { animation: fadeIn 0.3s ease; }
+        .ordinance-viewer h1 { font-size: 1.8rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; color: #111; }
+        .ordinance-viewer h2 { font-size: 1.3rem; color: var(--accent); margin-top: 2rem; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2>Penobscot</h2>
+        <ul>
+            <li><a href="#penobscot" class="tab-link active" data-target="penobscot">The Ordinance Gap</a></li>
+        </ul>
+        <h2 style="margin-top: 2rem;">Neighboring Towns</h2>
+        <ul>
+            <li><a href="#bluehill" class="tab-link" data-target="bluehill">Blue Hill</a></li>
+            <li><a href="#brooklin" class="tab-link" data-target="brooklin">Brooklin</a></li>
+            <li><a href="#brooksville" class="tab-link" data-target="brooksville">Brooksville</a></li>
+            <li><a href="#castine" class="tab-link" data-target="castine">Castine</a></li>
+            <li><a href="#orland" class="tab-link" data-target="orland">Orland</a></li>
+            <li><a href="#sedgwick" class="tab-link" data-target="sedgwick">Sedgwick</a></li>
+            <li><a href="#surry" class="tab-link" data-target="surry">Surry</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="content-wrapper">
+            <!-- PENOBSCOT -->
+            <section id="penobscot" class="tab-content active">
+                <div class="summary-content">
+                    <h1>Know Before You Vote</h1>
+                    <h2 class="subheadline">November 20 Special Election: Authorizing Bars &amp; Restaurants in Penobscot</h2>
+                    
+                    <p class="intro-text">Penobscot currently lacks the basic land use and commercial site plan review ordinances necessary to manage high-impact developments like bars and restaurants. Authorizing on-premises alcohol sales before establishing these protections leaves the town vulnerable.</p>
+                    
+                    <h3>Commercial Land Use Absence</h3>
+                    <span class="ref-tag">REF: <a href="penobscot-ordinance.html#sec5">LAND USE REGULATION SECTION 5</a></span>
+                    <p>While commercial structures require a Planning Board permit in the General Development District, there are zero specific commercial performance standards attached to the approval process to protect abutters from commercial nuisances.</p>
+
+                    <h3>Basic Setbacks Only</h3>
+                    <span class="ref-tag">REF: <a href="penobscot-ordinance.html#sec7">LAND USE REGULATION SECTIONS 7.4 & 7.5</a></span>
+                    <p>The town requires a 50-foot setback from highways and 20-foot side/rear setbacks, but lacks mandatory vegetative buffers or commercial screening requirements to block noise or light.</p>
+
+                    <h3>No Noise or Light Limits</h3>
+                    <p>Unlike every neighboring municipality, Penobscot lacks any decibel caps, hours of operation limits, or foot-candle lighting restrictions to protect residential abutters from commercial venues.</p>
+                    
+                    <a href="https://penobscotmaine.org/" target="_blank" class="official-link">Visit Official Penobscot Website &rarr;</a>
+                </div>
+            </section>
+
+            <!-- BLUE HILL -->
+            <section id="bluehill" class="tab-content">
+                <div class="summary-content">
+                    <h1>Blue Hill</h1>
+                    <p class="intro-text">Blue Hill regulates bars and restaurants through a combination of its 2024 Commercial Site Plan Review Ordinance (CSPRO) and a 1978 Special Amusement Ordinance. These rules give the town authority to manage high-impact development and place conditions on venues that serve alcohol and host live entertainment.</p>
+
+                    <h3>Live Entertainment & Hours</h3>
+                    <span class="ref-tag">REF: <a href="blue-hill-ordinance.html#amusement-201">SPECIAL AMUSEMENT ORDINANCE SECTIONS 201 & 204</a></span>
+                    <p>Any on-premises liquor licensee hosting music, dancing, or entertainment must obtain a Special Amusement Permit. The Select Board can set written rules specifying permitted hours of operation, facility size, and location to protect public welfare.</p>
+
+                    <h3>Traffic and Safety Access</h3>
+                    <span class="ref-tag">REF: <a href="blue-hill-ordinance.html#cspro-6B">CSPRO SECTION 6.B</a></span>
+                    <p>The layout must provide safe vehicular and pedestrian movement. Clear access routes must be maintained for emergency vehicles, and parking designs must prevent vehicles from backing out onto a street.</p>
+
+                    <h3>Lot Line Lighting</h3>
+                    <span class="ref-tag">REF: <a href="blue-hill-ordinance.html#cspro-6E">CSPRO SECTION 6.E.2</a></span>
+                    <p>Lighting must be shielded so elements are not visible to motorists or abutters. Illumination cannot exceed 0.5 foot-candles upon residences on abutting lots, preventing patio and parking lights from becoming a nuisance.</p>
+
+                    <h3>Emissions and Odors</h3>
+                    <span class="ref-tag">REF: <a href="blue-hill-ordinance.html#cspro-6E1">CSPRO SECTION 6.E.1</a></span>
+                    <p>The ordinance prohibits emissions that pose an unreasonable risk and explicitly forbids land uses from producing unreasonable, offensive, or harmful odors perceptible beyond the property lines.</p>
+
+                    <a href="https://bluehillme.gov/" target="_blank" class="official-link">Visit Official Blue Hill Website &rarr;</a>
+                </div>
+            </section>
+
+            <!-- BROOKLIN -->
+            <section id="brooklin" class="tab-content">
+                <div class="summary-content">
+                    <h1>Brooklin</h1>
+                    <p class="intro-text">The Brooklin Site Plan Review Ordinance strictly regulates bars and restaurants as "new nonresidential uses" through commercial performance standards. The Planning Board holds the authority to attach specific operational conditions to a permit to ensure a proposed venue meets these baseline criteria.</p>
+                    
+                    <h3>Noise Limits</h3>
+                    <span class="ref-tag">REF: <a href="brooklin-ordinance.html#sec9-23">SITE PLAN SECTION 9.23</a></span>
+                    <p>Uses generating noise must be designed and landscaped to minimize interference with neighbors. The ordinance explicitly caps noise levels by enforcing the commercial standards set in Appendix B of Brooklin's Wind Energy Facility Ordinance.</p>
+
+                    <h3>Traffic and Safety Access</h3>
+                    <span class="ref-tag">REF: <a href="brooklin-ordinance.html#sec9-2">SITE PLAN SECTIONS 9.2 & 9.3</a></span>
+                    <p>The applicant must obtain a letter from the Fire Chief confirming adequate emergency access. Access points must meet DOT sight distances and cannot be placed within 50 feet of an intersection. The Institute of Traffic Engineers manual classifies dining/drinking places as high-trip generators, meaning a busy venue could trigger stricter traffic mitigation or shared access requirements.</p>
+
+                    <h3>Lot Line Lighting</h3>
+                    <span class="ref-tag">REF: <a href="brooklin-ordinance.html#sec9-22">SITE PLAN SECTION 9.22</a></span>
+                    <p>Exterior lighting must be shielded from neighboring properties and the street. Light spillover cannot exceed 0.5 foot-candles at the property line, strictly limiting bright outdoor patio or parking lot lighting from intruding on residential abutters.</p>
+
+                    <h3>Commercial Setbacks</h3>
+                    <span class="ref-tag">REF: <a href="brooklin-ordinance.html#sec9-1">SITE PLAN SECTION 9.1</a></span>
+                    <p>The building must be set back at least 25 feet from town roads, 50 feet from state highways, and 15 feet from side and rear property lines. The building height cannot exceed 35 feet.</p>
+
+                    <a href="https://www.brooklinmaine.com/" target="_blank" class="official-link">Visit Official Brooklin Website &rarr;</a>
+                </div>
+            </section>
+
+            <!-- BROOKSVILLE -->
+            <section id="brooksville" class="tab-content">
+                <div class="summary-content">
+                    <h1>Brooksville</h1>
+                    <p class="intro-text">Brooksville manages commercial venues serving alcohol directly through its comprehensive Special Amusement Permit Regulations, which impose strict noise and nuisance controls on any facility hosting live entertainment.</p>
+
+                    <h3>Live Entertainment & Noise</h3>
+                    <span class="ref-tag">REF: <a href="brooksville-ordinance.html#sec13">SPECIAL AMUSEMENT REGS SECTIONS 13 & 15</a></span>
+                    <p>Any on-premises liquor licensee hosting music or entertainment must obtain a Special Amusement Permit. The applicant must explicitly demonstrate the ability to prevent the emanation of excessive noise, and sources of noise must be muffled so as not to be objectionable.</p>
+
+                    <h3>Nuisance Control</h3>
+                    <span class="ref-tag">REF: <a href="brooksville-ordinance.html#sec16">SPECIAL AMUSEMENT REGS SECTION 16</a></span>
+                    <p>The ordinance explicitly forbids licensees from permitting the use of the premises to result in any continued, excessive or loud noise that endangers the comfort, repose, health, or safety of individuals, or which disturbs the peace and tranquility of the neighborhood.</p>
+
+                    <h3>Public Notice & Abutters</h3>
+                    <span class="ref-tag">REF: <a href="brooksville-ordinance.html#sec3">SPECIAL AMUSEMENT REGS SECTION 3</a></span>
+                    <p>Before a permit is granted, the Selectmen must hold a public hearing. All owners of land within 300 feet of the applicant's premises must receive written notice via first class mail.</p>
+
+                    <a href="https://brooksvillemaine.org/" target="_blank" class="official-link">Visit Official Brooksville Website &rarr;</a>
+                </div>
+            </section>
+
+            <!-- CASTINE -->
+            <section id="castine" class="tab-content">
+                <div class="summary-content">
+                    <h1>Castine</h1>
+                    <p class="intro-text">Castine subjects commercial developments to rigorous performance standards outlined in its Zoning Ordinance, ensuring that high-impact venues like restaurants and bars do not degrade the historic and residential fabric of the town.</p>
+
+                    <h3>Strict Noise Decibel Limits</h3>
+                    <span class="ref-tag">REF: <a href="castine-ordinance.html#sec6-21">ZONING ORDINANCE SECTION 6.21</a></span>
+                    <p>Castine explicitly caps unreasonable noise at the lot lines. Noise cannot exceed 60 dBA from 7:00 a.m. to 10:00 p.m., and is restricted to 50 dBA from 10:00 p.m. to 7:00 a.m.</p>
+
+                    <h3>Parking Ratios</h3>
+                    <span class="ref-tag">REF: <a href="castine-ordinance.html#sec6-22">ZONING ORDINANCE SECTION 6.22.B.12</a></span>
+                    <p>Restaurants and cocktail lounges must provide adequate off-street parking, calculated at one (1) space for every four (4) customer seats, plus one (1) space for every two (2) employees.</p>
+
+                    <h3>Lighting Limitations</h3>
+                    <span class="ref-tag">REF: <a href="castine-ordinance.html#sec6-14">ZONING ORDINANCE SECTION 6.14</a></span>
+                    <p>No land use may produce unreasonable glare beyond its lot lines. Light spillover cannot exceed 0.3 foot-candles. Where practicable, lighting must be directed downward and the light source must be shielded.</p>
+
+                    <h3>Fire Hazard Mitigation</h3>
+                    <span class="ref-tag">REF: <a href="castine-ordinance.html#sec6-9">ZONING ORDINANCE SECTION 6.9</a></span>
+                    <p>Commercial district uses require written approval from the Fire Chief. There must be unobstructed access for fire trucks and ambulances, and an adequate water supply for fire suppression must be available.</p>
+
+                    <a href="https://castine.me.us/" target="_blank" class="official-link">Visit Official Castine Website &rarr;</a>
+                </div>
+            </section>
+
+            <!-- ORLAND -->
+            <section id="orland" class="tab-content">
+                <div class="summary-content">
+                    <h1>Orland</h1>
+                    <p class="intro-text">Orland utilizes a comprehensive Site Plan Review Ordinance to evaluate nonresidential construction and uses. The Planning Board strictly evaluates traffic, parking, and neighbor impacts before granting approvals.</p>
+
+                    <h3>Operational & Impact Controls</h3>
+                    <span class="ref-tag">REF: <a href="orland-ordinance.html#sec9-22">SITE PLAN ORDINANCE SECTION 9.22</a></span>
+                    <p>All features that may have an adverse audio or visual impact on surrounding properties must have sufficient setbacks and screening. The town mandates that hours of operation, noise levels, and exterior lighting be designed specifically to minimize adverse impacts on neighboring properties.</p>
+
+                    <h3>Traffic & Safety</h3>
+                    <span class="ref-tag">REF: <a href="orland-ordinance.html#sec9-2">SITE PLAN ORDINANCE SECTIONS 9.2 & 9.3</a></span>
+                    <p>Vehicular access must not cause an intersection to function below a Level of Service D. Driveways must meet MDOT sight distances, and private entrances must be located at least 50 feet from the closest unsignalized intersection.</p>
+
+                    <h3>Parking Design</h3>
+                    <span class="ref-tag">REF: <a href="orland-ordinance.html#sec9-6">SITE PLAN ORDINANCE SECTION 9.6</a></span>
+                    <p>Parking areas with more than two spaces must be arranged so vehicles do not have to back out into the street. All parking spaces and impervious surfaces must be located at least five feet from any side or rear lot line.</p>
+
+                    <a href="https://www.orlandme.org/" target="_blank" class="official-link">Visit Official Orland Website &rarr;</a>
+                </div>
+            </section>
+
+            <!-- SEDGWICK -->
+            <section id="sedgwick" class="tab-content">
+                <div class="summary-content">
+                    <h1>Sedgwick</h1>
+                    <p class="intro-text">Sedgwick controls commercial venues through both a Site Plan Review Ordinance and a Special Amusement Permit Ordinance, combining land-use design standards with strict operational curfews for entertainment.</p>
+
+                    <h3>Mandatory Closing Times</h3>
+                    <span class="ref-tag">REF: <a href="sedgwick-ordinance.html#amusement-2I">SPECIAL AMUSEMENT ORDINANCE SECTION 2.I.3</a></span>
+                    <p>For premises holding a Special Amusement Permit, all outdoor permitted activities must completely cease at 9:00 PM. All indoor permitted activities must cease at 11:00 PM.</p>
+
+                    <h3>Parking Requirements</h3>
+                    <span class="ref-tag">REF: <a href="sedgwick-ordinance.html#site-3B">SITE PLAN ORDINANCE SECTION III.B.1</a></span>
+                    <p>Restaurants, eating, and drinking establishments must provide one (1) off-street parking space for every four (4) seats, plus one (1) space for every two (2) employees.</p>
+
+                    <h3>Buffer and Screening</h3>
+                    <span class="ref-tag">REF: <a href="sedgwick-ordinance.html#site-2B">SITE PLAN ORDINANCE SECTION II.B</a></span>
+                    <p>Storage areas, machinery, loading areas, and utility buildings must have sufficient setbacks and screening to minimize their adverse impact on surrounding properties.</p>
+
+                    <a href="https://sedgwickmaine.org/" target="_blank" class="official-link">Visit Official Sedgwick Website &rarr;</a>
+                </div>
+            </section>
+
+            <!-- SURRY -->
+            <section id="surry" class="tab-content">
+                <div class="summary-content">
+                    <h1>Surry</h1>
+                    <p class="intro-text">Surry's Unified Development Ordinance (UDO) establishes rigorous site plan review standards for commercial facilities, mandating structural buffers, dark-sky lighting, and stringent parking minimums.</p>
+
+                    <h3>Noise & Structural Buffers</h3>
+                    <span class="ref-tag">REF: <a href="surry-ordinance.html#sec4-1">UDO SECTION IV.1</a></span>
+                    <p>Surry uses mandatory structural buffer strips to minimize noise and visual impacts. No commercial use may be erected unless a buffer strip at least thirty (30) feet wide is provided and maintained between any adjoining residential district or use and the commercial structure. If natural features are insufficient to buffer the noise and view, a landscaped area or a 6-foot fence is required.</p>
+
+                    <h3>Dark Skies Lighting</h3>
+                    <span class="ref-tag">REF: <a href="surry-ordinance.html#sec4-14">UDO SECTION IV.14</a></span>
+                    <p>All exterior lighting must encourage "dark skies" and be designed to minimize adverse impacts on neighboring properties. Adverse impact is judged in terms of hours of use and potential damage to the value of adjacent properties.</p>
+
+                    <h3>Parking Capacity</h3>
+                    <span class="ref-tag">REF: <a href="surry-ordinance.html#sec4-18">UDO SECTION IV.18</a></span>
+                    <p>It shall be unlawful to use any required off-street parking or loading facilities for motor vehicle repair work... No area designated as a required parking area in connection with any designated building or use shall be operated as a commercial or public parking lot... Restaurants, eating & drinking establishments: 1 per 4 seats plus 1 per shift employee.</p>
+
+                    <a href="https://townofsurrymaine.com/" target="_blank" class="official-link">Visit Official Surry Website &rarr;</a>
+                </div>
+            </section>
+        </div>
+
+    <footer style="text-align: center; padding: 2rem 1rem; margin-top: 3rem; font-size: 0.85rem; color: #777; border-top: 1px solid #eaeaea;">
+        <em>This is an independent civic website and is not affiliated with or endorsed by the Town of Penobscot.</em>
+    </footer>
+</body>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.tab-link');
+            const contents = document.querySelectorAll('.tab-content');
+
+            // Sidebar navigation logic
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    
+                    // Visual tab update
+                    links.forEach(l => l.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    const targetSection = document.getElementById(targetId);
+                    targetSection.classList.add('active');
+                    
+                    // Reset to summary view if navigating via sidebar
+                    const summary = targetSection.querySelector('.summary-content');
+                    const viewer = targetSection.querySelector('.ordinance-viewer');
+                    if (summary) summary.style.display = 'block';
+                    if (viewer) viewer.style.display = 'none';
+                    
+                    history.pushState(null, null, '#' + targetId);
+                    window.scrollTo(0,0);
+                });
+            });
+
+            // Deep link hash load logic
+            if(window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetLink = document.querySelector('.tab-link[data-target="' + targetId + '"]');
+                if(targetLink) targetLink.click();
+            }
+
+            // Intercept internal ordinance links to load via Fetch API
+            document.body.addEventListener('click', async (e) => {
+                const refLink = e.target.closest('.ref-tag a');
+                if (refLink) {
+                    e.preventDefault();
+                    const href = refLink.getAttribute('href');
+                    const [url, hash] = href.split('#');
+                    
+                    const activeSection = document.querySelector('section.active');
+                    const summary = activeSection.querySelector('.summary-content');
+                    
+                    // Find or create the ordinance viewer container
+                    let viewer = activeSection.querySelector('.ordinance-viewer');
+                    if (!viewer) {
+                        viewer = document.createElement('div');
+                        viewer.className = 'ordinance-viewer';
+                        activeSection.insertBefore(viewer, activeSection.firstChild);
+                    }
+                    
+                    try {
+                        const res = await fetch(url);
+                        if (!res.ok) throw new Error("HTTP " + res.status);
+                        const html = await res.text();
+                        
+                        // Parse HTML to manipulate external links
+                        const doc = new DOMParser().parseFromString(html, 'text/html');
+                        doc.querySelectorAll('a').forEach(a => a.setAttribute('target', '_blank'));
+                        
+                        // Extract just the body content, excluding the footer we added to individual files
+                        const docBodyContent = doc.body.innerHTML.split('<footer')[0];
+                        
+                        // Build Breadcrumb
+                        const townName = summary.querySelector('h1').innerText;
+                        const breadcrumb = `
+                            <div class="breadcrumb">
+                                <a class="back-link">&larr; Back to ${townName} Summary</a>
+                                <span class="divider">/</span>
+                                <span class="current">Ordinance Excerpts</span>
+                            </div>
+                        `;
+                        
+                        viewer.innerHTML = breadcrumb + docBodyContent;
+                        
+                        // Wire up the back button
+                        viewer.querySelector('.back-link').addEventListener('click', (ev) => {
+                            ev.preventDefault();
+                            viewer.style.display = 'none';
+                            summary.style.display = 'block';
+                            window.scrollTo(0,0);
+                        });
+                        
+                        // Toggle views
+                        summary.style.display = 'none';
+                        viewer.style.display = 'block';
+                        
+                        // Scroll to targeted hash within the excerpt slowly, leaving room for breadcrumb
+                        if (hash) {
+                            setTimeout(() => {
+                                const target = viewer.querySelector('#' + hash);
+                                if (target) {
+                                    // Custom smooth scroll animation leaving 120px gap for the breadcrumb at top
+                                    const targetY = target.getBoundingClientRect().top + window.scrollY - 120;
+                                    const startY = window.scrollY;
+                                    const distance = targetY - startY;
+                                    let startTime = null;
+                                    const duration = 1500; // 1.5 seconds
+
+                                    function animation(currentTime) {
+                                        if (startTime === null) startTime = currentTime;
+                                        const timeElapsed = currentTime - startTime;
+                                        const progress = Math.min(timeElapsed / duration, 1);
+                                        
+                                        // Ease-in-out function
+                                        const ease = progress < 0.5 
+                                            ? 2 * progress * progress 
+                                            : -1 + (4 - 2 * progress) * progress;
+                                            
+                                        window.scrollTo(0, startY + distance * ease);
+                                        
+                                        if (timeElapsed < duration) {
+                                            requestAnimationFrame(animation);
+                                        }
+                                    }
+                                    requestAnimationFrame(animation);
+                                }
+                            }, 50); // tiny delay to allow the DOM to render the new HTML content
+                        } else {
+                            window.scrollTo(0,0);
+                        }
+                    } catch(err) {
+                        console.error(err);
+                        alert("Could not dynamically load the ordinance file. Ensure you are viewing via the Apache web server (http://localhost) to prevent CORS errors.");
+                    }
+                }
+            });
+        });
+    </script>
+</html>
