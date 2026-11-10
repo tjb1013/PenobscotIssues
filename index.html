@@ -4,48 +4,484 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Know Before You Vote: Penobscot's Ordinance Gap</title>
+    <meta name="description" content="An independent civic reference comparing Penobscot's commercial land use ordinances with neighboring towns ahead of the Special Election on authorizing bars and restaurants." />
+    <meta property="og:title" content="Know Before You Vote: Penobscot's Ordinance Gap" />
+    <meta property="og:description" content="An independent civic reference comparing Penobscot's commercial land use ordinances with neighboring towns ahead of the Special Election on authorizing bars and restaurants." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
     <style>
-        :root { --bg: #fdfdfd; --text: #222; --accent: #0056b3; --sidebar: #fff; --border: #eaeaea; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; display: flex; min-height: 100vh; line-height: 1.6; background: var(--bg); color: var(--text); }
-        nav { width: 250px; background: var(--sidebar); border-right: 1px solid var(--border); padding: 2rem 1rem; position: fixed; height: 100vh; overflow-y: auto; }
-        nav h2 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: #777; margin-bottom: 1rem; }
+        :root {
+            --bg: #fdfdfd;
+            --text: #222;
+            --accent: #0056b3;
+            --accent-soft: #eef5fc;
+            --sidebar: #fff;
+            --border: #eaeaea;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.65;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Mobile Top Bar (hidden on desktop) */
+        .mobile-header {
+            display: none;
+        }
+        .nav-backdrop {
+            display: none;
+        }
+        .mobile-town-strip {
+            display: none;
+        }
+
+        /* Desktop Sidebar Navigation */
+        nav#site-nav {
+            width: 260px;
+            background: var(--sidebar);
+            border-right: 1px solid var(--border);
+            padding: 2rem 1.25rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 30;
+        }
+        .nav-drawer-header {
+            display: none;
+        }
+        nav h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #666;
+            margin: 0 0 0.75rem 0.75rem;
+            font-weight: 600;
+        }
         nav ul { list-style: none; padding: 0; margin: 0; }
         nav li { margin-bottom: 0.25rem; }
-        nav a { text-decoration: none; color: var(--text); display: block; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.2s; }
-        nav a:hover { background: #f5f5f5; }
-        nav a.active { background: var(--accent); color: #fff; font-weight: 500; }
-        main { margin-left: 280px; padding: 4rem 2rem; max-width: 800px; width: 100%; display: flex; flex-direction: column; }
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            min-height: 42px;
+            padding: 0.5rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+        nav a:hover { background: #f4f4f5; }
+        nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        nav a.active {
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Main Content Area */
+        main {
+            margin-left: 260px;
+            padding: 4rem 3rem;
+            max-width: 820px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
         .content-wrapper { flex: 1; }
-        section { display: none; animation: fadeIn 0.3s ease; }
+        section { display: none; animation: fadeIn 0.2s ease; }
         section.active { display: block; }
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.1; font-weight: 700; color: #111; }
-        .subheadline { font-size: 1.3rem; color: #555; font-weight: 500; margin-top: 0; margin-bottom: 1.5rem; line-height: 1.4; }
-        h3 { font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.2rem; color: #111; }
-        .ref-tag { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem; }
-        .ref-tag a { color: var(--accent); text-decoration: none; }
-        .ref-tag a:hover { text-decoration: underline; }
-        p { margin-bottom: 1.5rem; color: #444; }
-        .intro-text { font-size: 1.1rem; color: #333; margin-bottom: 2.5rem; }
-        .official-link { display: inline-block; margin-top: 2rem; padding: 0.75rem 1.5rem; background: #eee; color: #333; text-decoration: none; border-radius: 4px; font-weight: 500; font-size: 0.9rem; }
-        .official-link:hover { background: #e0e0e0; }
-        hr { border: 0; border-top: 1px solid var(--border); margin: 3rem 0; }
-        
+        h1 {
+            font-size: clamp(1.85rem, 4vw, 2.5rem);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            line-height: 1.15;
+            font-weight: 700;
+            color: #111;
+            text-wrap: balance;
+        }
+        .subheadline {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: #555;
+            font-weight: 500;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            text-wrap: balance;
+        }
+        h3 {
+            font-size: 1.125rem;
+            margin-top: 2.25rem;
+            margin-bottom: 0.25rem;
+            color: #111;
+            line-height: 1.35;
+        }
+        .ref-tag {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .ref-tag a {
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid rgba(0, 86, 179, 0.25);
+            transition: border-color 0.15s ease;
+        }
+        .ref-tag a:hover {
+            border-bottom-color: var(--accent);
+        }
+        p { margin-top: 0; margin-bottom: 1.5rem; color: #3f3f46; }
+        .intro-text {
+            font-size: 1.1rem;
+            color: #27272a;
+            margin-bottom: 2.25rem;
+            line-height: 1.65;
+        }
+        .official-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            margin-top: 1.5rem;
+            padding: 0.7rem 1.4rem;
+            background: #f1f3f5;
+            color: #222;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.92rem;
+            border: 1px solid #e4e4e7;
+            transition: background 0.15s ease;
+        }
+        .official-link:hover { background: #e4e7eb; }
+        hr { border: 0; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+
         /* Dynamic Ordinance Viewer Styles */
-        .breadcrumb { margin-bottom: 2rem; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-        .breadcrumb a { color: var(--accent); text-decoration: none; cursor: pointer; }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb span.divider { color: #aaa; margin: 0 0.5rem; }
+        .breadcrumb {
+            margin-bottom: 1.75rem;
+            font-size: 0.92rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .breadcrumb a.back-link,
+        .bottom-back-link {
+            color: var(--accent);
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            min-height: 40px;
+            padding: 0.35rem 0.75rem;
+            background: var(--accent-soft);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.15s ease;
+        }
+        .breadcrumb a.back-link:hover,
+        .bottom-back-link:hover {
+            background: #dcebfb;
+        }
+        .bottom-back-wrapper {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .breadcrumb span.divider { color: #aaa; margin: 0 0.25rem; }
         .breadcrumb span.current { color: #666; }
-        .ordinance-viewer { animation: fadeIn 0.3s ease; }
-        .ordinance-viewer h1 { font-size: 1.8rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; color: #111; }
-        .ordinance-viewer h2 { font-size: 1.3rem; color: var(--accent); margin-top: 2rem; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .ordinance-viewer { animation: fadeIn 0.2s ease; }
+        .ordinance-viewer h1 {
+            font-size: clamp(1.45rem, 3.5vw, 1.85rem);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem;
+            color: #111;
+        }
+        .ordinance-viewer h2 {
+            font-size: clamp(1.15rem, 2.8vw, 1.35rem);
+            color: var(--accent);
+            margin-top: 2rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.35;
+        }
+        .ordinance-viewer p a {
+            color: var(--accent);
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 86, 179, 0.3);
+        }
+        .ordinance-viewer p a:hover {
+            border-bottom-color: var(--accent);
+        }
+
+        .site-footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3.5rem;
+            font-size: 0.85rem;
+            color: #71717a;
+            border-top: 1px solid var(--border);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Phone & Tablet Layout */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            /* Sticky Mobile Top Bar (54px height, <7% of viewport) */
+            .mobile-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.75rem;
+                height: 54px;
+                padding: 0 1rem;
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border-bottom: 1px solid var(--border);
+                position: sticky;
+                top: 0;
+                z-index: 40;
+            }
+            .mobile-brand {
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: #111;
+                text-decoration: none;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .mobile-menu-btn {
+                appearance: none;
+                border: 1px solid #d4d4d8;
+                background: #fff;
+                color: #111;
+                font-family: inherit;
+                font-size: 0.85rem;
+                font-weight: 600;
+                min-height: 40px;
+                padding: 0 0.85rem;
+                border-radius: 6px;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
+                cursor: pointer;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            .mobile-menu-btn:active {
+                background: #f4f4f5;
+            }
+            .mobile-menu-btn svg {
+                width: 16px;
+                height: 16px;
+                stroke: currentColor;
+                flex-shrink: 0;
+            }
+
+            /* Horizontal Scrollable Town Switcher Bar (scrolls naturally with page) */
+            .mobile-town-strip {
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                overflow-x: auto;
+                padding: 0.65rem 1rem;
+                background: #f8f9fa;
+                border-bottom: 1px solid var(--border);
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .mobile-town-strip::-webkit-scrollbar {
+                display: none;
+            }
+            .mobile-pill {
+                appearance: none;
+                border: 1px solid #e4e4e7;
+                background: #fff;
+                color: #3f3f46;
+                font-family: inherit;
+                font-size: 0.84rem;
+                font-weight: 500;
+                min-height: 38px;
+                padding: 0.4rem 0.85rem;
+                border-radius: 6px;
+                white-space: nowrap;
+                flex-shrink: 0;
+                cursor: pointer;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+            }
+            .mobile-pill.active {
+                background: var(--accent);
+                border-color: var(--accent);
+                color: #fff;
+                font-weight: 600;
+            }
+
+            /* Slide-Over Navigation Drawer on Mobile */
+            .nav-backdrop {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.35);
+                z-index: 45;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.2s ease;
+            }
+            .nav-backdrop.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            nav#site-nav {
+                width: min(300px, 84vw);
+                padding: 1.25rem 1rem 2rem;
+                z-index: 50;
+                transform: translateX(-100%);
+                transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: none;
+            }
+            nav#site-nav.open {
+                transform: translateX(0);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            }
+            .nav-drawer-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 1rem;
+                margin-bottom: 1.25rem;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-drawer-title {
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: #111;
+            }
+            .nav-close-btn {
+                appearance: none;
+                border: none;
+                background: #f4f4f5;
+                color: #333;
+                min-width: 40px;
+                min-height: 40px;
+                border-radius: 6px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+                cursor: pointer;
+            }
+            nav a {
+                min-height: 44px;
+                font-size: 1rem;
+            }
+
+            /* Mobile Main Container */
+            main {
+                margin-left: 0;
+                padding: 1.5rem 1.15rem 2.5rem;
+                max-width: 100%;
+                min-height: auto;
+            }
+            .intro-text {
+                font-size: 1.03rem;
+                margin-bottom: 1.75rem;
+            }
+            h3 {
+                margin-top: 1.85rem;
+            }
+            .ref-tag a {
+                min-height: 38px;
+                padding: 0.35rem 0;
+            }
+            .official-link {
+                width: 100%;
+                min-height: 46px;
+            }
+            .breadcrumb a.back-link,
+            .bottom-back-link {
+                min-height: 44px;
+                width: 100%;
+                justify-content: center;
+            }
+            .breadcrumb span.divider,
+            .breadcrumb span.current {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
+    <header class="mobile-header">
+        <a href="#penobscot" class="mobile-brand" id="mobile-brand-link">Bars in Penobscot Vote</a>
+        <button type="button" class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Select town or section" aria-expanded="false" aria-controls="site-nav">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+            <span id="mobile-active-town-label">Towns</span>
+        </button>
+    </header>
+
+    <div class="mobile-town-strip" role="navigation" aria-label="Quick town switcher">
+        <a href="#penobscot" class="mobile-pill active" data-target="penobscot">Penobscot</a>
+        <a href="#bluehill" class="mobile-pill" data-target="bluehill">Blue Hill</a>
+        <a href="#brooklin" class="mobile-pill" data-target="brooklin">Brooklin</a>
+        <a href="#brooksville" class="mobile-pill" data-target="brooksville">Brooksville</a>
+        <a href="#castine" class="mobile-pill" data-target="castine">Castine</a>
+        <a href="#orland" class="mobile-pill" data-target="orland">Orland</a>
+        <a href="#sedgwick" class="mobile-pill" data-target="sedgwick">Sedgwick</a>
+        <a href="#surry" class="mobile-pill" data-target="surry">Surry</a>
+    </div>
+
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
+
+    <nav id="site-nav" aria-label="Town ordinances navigation">
+        <div class="nav-drawer-header">
+            <span class="nav-drawer-title">Select Town</span>
+            <button type="button" class="nav-close-btn" id="nav-close-btn" aria-label="Close navigation menu">&times;</button>
+        </div>
         <h2>Penobscot</h2>
         <ul>
             <li><a href="#penobscot" class="tab-link active" data-target="penobscot">The Ordinance Gap</a></li>
@@ -254,47 +690,130 @@
             </section>
         </div>
 
-    <footer style="text-align: center; padding: 2rem 1rem; margin-top: 3rem; font-size: 0.85rem; color: #777; border-top: 1px solid #eaeaea;">
-        <em>This is an independent civic website and is not affiliated with or endorsed by the Town of Penobscot.</em>
-    </footer>
-</body>
+        <footer class="site-footer">
+            <em>This is an independent civic website and is not affiliated with or endorsed by the Town of Penobscot.</em>
+        </footer>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const links = document.querySelectorAll('.tab-link');
+            const mobilePills = document.querySelectorAll('.mobile-pill');
             const contents = document.querySelectorAll('.tab-content');
+            const nav = document.getElementById('site-nav');
+            const backdrop = document.getElementById('nav-backdrop');
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const closeBtn = document.getElementById('nav-close-btn');
+            const activeTownLabel = document.getElementById('mobile-active-town-label');
+            const mobileBrandLink = document.getElementById('mobile-brand-link');
+
+            function closeMobileMenu() {
+                if (!nav || !backdrop || !menuToggle) return;
+                nav.classList.remove('open');
+                backdrop.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            function openMobileMenu() {
+                if (!nav || !backdrop || !menuToggle) return;
+                nav.classList.add('open');
+                backdrop.classList.add('open');
+                menuToggle.setAttribute('aria-expanded', 'true');
+            }
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    const isOpen = nav.classList.contains('open');
+                    if (isOpen) {
+                        closeMobileMenu();
+                    } else {
+                        openMobileMenu();
+                    }
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeMobileMenu);
+            }
+
+            if (backdrop) {
+                backdrop.addEventListener('click', closeMobileMenu);
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+
+            function activateTab(targetId, updateHistory = true) {
+                const targetSection = document.getElementById(targetId);
+                if (!targetSection) return;
+
+                links.forEach(l => {
+                    l.classList.toggle('active', l.getAttribute('data-target') === targetId);
+                });
+
+                let activePill = null;
+                mobilePills.forEach(p => {
+                    const isMatch = p.getAttribute('data-target') === targetId;
+                    p.classList.toggle('active', isMatch);
+                    if (isMatch) activePill = p;
+                });
+
+                contents.forEach(c => c.classList.remove('active'));
+                targetSection.classList.add('active');
+
+                // Reset to summary view if navigating via sidebar or town bar
+                const summary = targetSection.querySelector('.summary-content');
+                const viewer = targetSection.querySelector('.ordinance-viewer');
+                if (summary) summary.style.display = 'block';
+                if (viewer) viewer.style.display = 'none';
+
+                if (activePill && activeTownLabel) {
+                    activeTownLabel.textContent = 'Towns';
+                    activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }
+
+                closeMobileMenu();
+
+                if (updateHistory) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+                window.scrollTo(0, 0);
+            }
 
             // Sidebar navigation logic
             links.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const targetId = link.getAttribute('data-target');
-                    
-                    // Visual tab update
-                    links.forEach(l => l.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
-                    link.classList.add('active');
-                    
-                    const targetSection = document.getElementById(targetId);
-                    targetSection.classList.add('active');
-                    
-                    // Reset to summary view if navigating via sidebar
-                    const summary = targetSection.querySelector('.summary-content');
-                    const viewer = targetSection.querySelector('.ordinance-viewer');
-                    if (summary) summary.style.display = 'block';
-                    if (viewer) viewer.style.display = 'none';
-                    
-                    history.pushState(null, null, '#' + targetId);
-                    window.scrollTo(0,0);
+                    activateTab(targetId);
                 });
             });
 
+            // Mobile quick-switcher pill logic
+            mobilePills.forEach(pill => {
+                pill.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = pill.getAttribute('data-target');
+                    activateTab(targetId);
+                });
+            });
+
+            if (mobileBrandLink) {
+                mobileBrandLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    activateTab('penobscot');
+                });
+            }
+
             // Deep link hash load logic
-            if(window.location.hash) {
+            if (window.location.hash) {
                 const targetId = window.location.hash.substring(1);
-                const targetLink = document.querySelector('.tab-link[data-target="' + targetId + '"]');
-                if(targetLink) targetLink.click();
+                if (document.getElementById(targetId)) {
+                    activateTab(targetId, false);
+                }
             }
 
             // Intercept internal ordinance links to load via Fetch API
@@ -328,48 +847,58 @@
                         // Extract just the body content, excluding the footer we added to individual files
                         const docBodyContent = doc.body.innerHTML.split('<footer')[0];
                         
-                        // Build Breadcrumb
+                        // Build Breadcrumb and Bottom Return Link
                         const townName = summary.querySelector('h1').innerText;
                         const breadcrumb = `
                             <div class="breadcrumb">
-                                <a class="back-link">&larr; Back to ${townName} Summary</a>
+                                <a href="#${activeSection.id}" class="back-link">&larr; Back to ${townName} Summary</a>
                                 <span class="divider">/</span>
                                 <span class="current">Ordinance Excerpts</span>
                             </div>
                         `;
+                        const bottomReturn = `
+                            <div class="bottom-back-wrapper">
+                                <a href="#${activeSection.id}" class="bottom-back-link">&larr; Back to ${townName} Summary</a>
+                            </div>
+                        `;
                         
-                        viewer.innerHTML = breadcrumb + docBodyContent;
+                        viewer.innerHTML = breadcrumb + docBodyContent + bottomReturn;
                         
-                        // Wire up the back button
-                        viewer.querySelector('.back-link').addEventListener('click', (ev) => {
-                            ev.preventDefault();
-                            viewer.style.display = 'none';
-                            summary.style.display = 'block';
-                            window.scrollTo(0,0);
+                        // Wire up both top and bottom back buttons
+                        viewer.querySelectorAll('.back-link, .bottom-back-link').forEach(btn => {
+                            btn.addEventListener('click', (ev) => {
+                                ev.preventDefault();
+                                viewer.style.display = 'none';
+                                summary.style.display = 'block';
+                                window.scrollTo(0, 0);
+                            });
                         });
                         
                         // Toggle views
                         summary.style.display = 'none';
                         viewer.style.display = 'block';
                         
-                        // Scroll to targeted hash within the excerpt slowly, leaving room for breadcrumb
+                        // Scroll to targeted hash within the excerpt slowly, leaving room for breadcrumb/header
                         if (hash) {
                             setTimeout(() => {
                                 const target = viewer.querySelector('#' + hash);
                                 if (target) {
-                                    // Custom smooth scroll animation leaving 120px gap for the breadcrumb at top
-                                    const targetY = target.getBoundingClientRect().top + window.scrollY - 120;
+                                    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                                    const targetY = Math.max(0, target.getBoundingClientRect().top + window.scrollY - 120);
+                                    if (prefersReducedMotion) {
+                                        window.scrollTo(0, targetY);
+                                        return;
+                                    }
                                     const startY = window.scrollY;
                                     const distance = targetY - startY;
                                     let startTime = null;
-                                    const duration = 1500; // 1.5 seconds
+                                    const duration = 900;
 
                                     function animation(currentTime) {
                                         if (startTime === null) startTime = currentTime;
                                         const timeElapsed = currentTime - startTime;
                                         const progress = Math.min(timeElapsed / duration, 1);
                                         
-                                        // Ease-in-out function
                                         const ease = progress < 0.5 
                                             ? 2 * progress * progress 
                                             : -1 + (4 - 2 * progress) * progress;
@@ -382,16 +911,30 @@
                                     }
                                     requestAnimationFrame(animation);
                                 }
-                            }, 50); // tiny delay to allow the DOM to render the new HTML content
+                            }, 50);
                         } else {
-                            window.scrollTo(0,0);
+                            window.scrollTo(0, 0);
                         }
                     } catch(err) {
                         console.error(err);
-                        alert("Could not dynamically load the ordinance file. Ensure you are viewing via the Apache web server (http://localhost) to prevent CORS errors.");
+                        const townName = summary.querySelector('h1').innerText;
+                        viewer.innerHTML = `
+                            <div class="breadcrumb">
+                                <a href="#${activeSection.id}" class="back-link">&larr; Back to ${townName} Summary</a>
+                            </div>
+                            <p>Could not dynamically load the ordinance excerpt file. Please try again or visit the official town website.</p>
+                        `;
+                        viewer.querySelector('.back-link').addEventListener('click', (ev) => {
+                            ev.preventDefault();
+                            viewer.style.display = 'none';
+                            summary.style.display = 'block';
+                        });
+                        summary.style.display = 'none';
+                        viewer.style.display = 'block';
                     }
                 }
             });
         });
     </script>
+</body>
 </html>
