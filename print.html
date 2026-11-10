@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Edition — Penobscot: Know Before You Vote (Complete Site &amp; Ordinance Reference)</title>
+    <meta name="robots" content="noindex">
+    <style>
+        :root {
+            --text: #111;
+            --muted: #4b5563;
+            --accent: #004494;
+            --border: #d4d4d8;
+            --bg-subtle: #f8fafc;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            color: var(--text);
+            background: #fff;
+            line-height: 1.55;
+            margin: 0;
+            padding: 2rem 1.5rem 4rem;
+            font-size: 11pt;
+        }
+        .document-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Screen-only print utility bar */
+        .print-toolbar {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 0.85rem 1.25rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .print-toolbar-info {
+            font-size: 0.9rem;
+            color: #334155;
+        }
+        .print-toolbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .print-toggle-label {
+            font-size: 0.85rem;
+            color: #334155;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        .print-btn {
+            appearance: none;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 0.55rem 1.15rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .print-btn:hover {
+            background: #003575;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .ref-label, .part-header, table {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .doc-header {
+            border-bottom: 2px solid #111;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .doc-kicker {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+        }
+        .doc-header h1 {
+            font-size: 2rem;
+            margin: 0 0 0.35rem 0;
+            line-height: 1.15;
+            color: #000;
+        }
+        .doc-subtitle {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #333;
+            margin: 0;
+        }
+
+        .part-header {
+            margin-top: 2.5rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #111;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .lead-paragraph {
+            font-size: 1.08rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .callout-box {
+            background: var(--bg-subtle);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.25rem 1.35rem;
+            margin-bottom: 1.75rem;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        .callout-box h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: #000;
+        }
+        .callout-box p {
+            margin: 0 0 0.75rem 0;
+        }
+        .callout-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .topic-block {
+            margin-bottom: 1.35rem;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        .topic-block h3, .topic-block h4 {
+            font-size: 1.05rem;
+            margin: 0 0 0.15rem 0;
+            color: #000;
+        }
+        .ref-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+        }
+        .topic-block p {
+            margin: 0 0 0.6rem 0;
+        }
+        .topic-block ul {
+            margin: 0.35rem 0 0.75rem 1.25rem;
+            padding-left: 0.25rem;
+        }
+        .topic-block li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Summary Comparison Table */
+        .comparison-table-wrapper {
+            margin: 1.25rem 0 2rem;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        table.comparison-table th,
+        table.comparison-table td {
+            border: 1px solid #cbd5e1;
+            padding: 0.5rem 0.65rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        table.comparison-table th {
+            background: #f1f5f9;
+            font-weight: 700;
+            color: #111;
+        }
+        table.comparison-table tr.highlight-row td {
+            background: #fffbeb;
+            font-weight: 600;
+        }
+
+        /* Town Section Styling */
+        .town-section {
+            margin-bottom: 2.25rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .town-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .town-header h2 {
+            font-size: 1.4rem;
+            margin: 0;
+            color: #000;
+        }
+        .town-url {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+        .town-intro {
+            font-style: italic;
+            color: #27272a;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.85rem;
+        }
+
+        /* Verbatim / Excerpt Box inside each town */
+        .excerpt-appendix {
+            margin-top: 1.15rem;
+            padding: 1rem 1.2rem;
+            background: #fafafa;
+            border: 1px solid #e4e4e7;
+            border-radius: 6px;
+            font-size: 0.92rem;
+        }
+        body.hide-excerpts .excerpt-appendix {
+            display: none;
+        }
+        .excerpt-appendix-title {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #3f3f46;
+            margin: 0 0 0.65rem 0;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid #e4e4e7;
+        }
+        .excerpt-item {
+            margin-bottom: 0.75rem;
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        .excerpt-item:last-child {
+            margin-bottom: 0;
+        }
+        .excerpt-item h4 {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin: 0 0 0.2rem 0;
+        }
+        .excerpt-item p {
+            margin: 0;
+            color: #27272a;
+        }
+
+        .doc-footer {
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 2px solid #111;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 0.85rem;
+            color: #4b5563;
+            text-align: center;
+        }
+
+        @media print {
+            @page {
+                margin: 0.6in 0.65in;
+            }
+            body {
+                padding: 0;
+                font-size: 10.5pt;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .page-break-before {
+                page-break-before: always;
+                break-before: page;
+            }
+            .town-section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <!-- Screen-Only Print Controls -->
+        <div class="print-toolbar no-print">
+            <div class="print-toolbar-info">
+                <strong>Printable Complete Edition</strong> — Formatted for standard 8.5&Prime; &times; 11&Prime; printing or saving as PDF.
+            </div>
+            <div class="print-toolbar-actions">
+                <label class="print-toggle-label">
+                    <input type="checkbox" id="toggle-excerpts" checked>
+                    Include Ordinance Excerpt Boxes
+                </label>
+                <button type="button" class="print-btn" onclick="window.print()">Print / Save PDF</button>
+            </div>
+        </div>
+
+        <!-- Document Masthead -->
+        <header class="doc-header">
+            <div class="doc-kicker">Penobscot Voter Information Guide &bull; Complete Reference Edition</div>
+            <h1>Penobscot: Know Before You Vote</h1>
+            <p class="doc-subtitle">November 20 Special Election: Authorizing Bars &amp; Restaurants in Penobscot</p>
+        </header>
+
+        <!-- PART I: PENOBSCOT -->
+        <section>
+            <p class="lead-paragraph">
+                Penobscot’s Land Use Regulations (adopted 1974) require a Planning Board permit for commercial structures in the General Development District. <strong>They do not set standards for noise, hours of operation, events or exterior lighting. Penobscot has no site plan review or special amusement ordinance.</strong> Several peer towns have rules of this kind. This document examines how Maine’s liquor-licensing statutes interact with local ordinances in Penobscot and neighboring towns, and highlights questions voters and officials may wish to clarify with the town’s attorney before the election.
+            </p>
+
+            <div class="callout-box">
+                <h3>How the Penobscot Vote, State Licensing &amp; Local Rules Fit Together</h3>
+                <span class="ref-label">REF: MAINE BABLO GUIDANCE &amp; 28-A M.R.S. §§ 1051, 653</span>
+                <p><strong>What a yes vote in Penobscot does and doesn’t do.</strong> A yes vote on November 20 would let the State issue licenses for on-premises liquor sales in Penobscot. It would not approve any specific business or limit how many licenses can be issued in Penobscot. The Maine Bureau of Alcoholic Beverages and Lottery Operations (BABLO) confirmed that the State has no population-based limit on the number of on-premises licenses in a municipality.</p>
+                <p><strong>What happens next.</strong> An applicant in Penobscot applies to BABLO, but the initial application must first be approved by the Penobscot Select Board (28-A M.R.S. §1051(2), §653). The Select Board must give written reasons and may deny only on grounds listed in §653(2). These include noncompliance with a local land use ordinance (§653(2)(B)), failure to comply with a municipal entertainment permit (§653(2)(D-1)), and, where required locally, server training (§653(2)(G)). If the Select Board takes no final action within 60 days of filing, the application is deemed approved (§653(1)(C)). A denial can be appealed to BABLO within 15 days.</p>
+                <p><strong>Why Penobscot’s ordinances matter.</strong> Generally, the Penobscot Select Board can apply only the local ordinances in force when it reviews an application. Where a town has no standards for noise, local operating hours, events or lighting, those matters are not listed local-ordinance grounds for denial. Standards adopted in Penobscot after a licensed business is operating may not apply to it in the same way; whether they would is a legal question that Penobscot’s town attorney or the Maine Municipal Association can confirm.</p>
+                <p style="font-size: 0.85rem; color: var(--muted);"><em>Source: Email from Sara Morey, Licensing and Tax Supervisor, BABLO Liquor Licensing and Enforcement (Oct. 23, 2026); Maine Revised Statutes Title 28-A, §§ 1051 and 653.</em></p>
+            </div>
+
+            <div class="topic-block">
+                <h3>1. Penobscot: Planning Board Permit, No Commercial Performance Standards</h3>
+                <span class="ref-label">REF: PENOBSCOT LAND USE REGULATION SECTIONS 5, 6.L, 12-B</span>
+                <p>In Penobscot, commercial structures require a Planning Board permit in the General Development District and are prohibited in the other two districts (Section 5). To grant a permit, the Penobscot Planning Board must find that the use will not create unsafe or unhealthful conditions, erosion, water pollution or wildlife habitat damage. It must also find that the use will conserve shoreland vegetation, public access to water and natural beauty (12-B(6)). The Board may attach reasonable conditions (12-B(7)), and commercial development in Penobscot requires a soils report (6.L). None of these Penobscot provisions sets standards for noise, hours of operation, events or exterior lighting.</p>
+            </div>
+
+            <div class="topic-block">
+                <h3>2. Penobscot: Setbacks</h3>
+                <span class="ref-label">REF: PENOBSCOT LAND USE REGULATION SECTIONS 7.5, 7.10, 7.11</span>
+                <p>All structures in any Penobscot district must be set back 20 feet from side and rear lot lines (7.5). Penobscot’s regulations as posted state no highway setback for commercial structures, and they do not require vegetative buffers or screening between commercial and residential properties. Commercial establishments in Penobscot, other than professional offices, are not allowed in the Shoreland District or in residential subdivisions (7.10, 7.11).</p>
+            </div>
+
+            <div class="topic-block">
+                <h3>3. Penobscot: No Mechanism for Noise, Hours, or Lighting Rules</h3>
+                <p>Penobscot’s posted ordinances contain no provision, and no review or permit process, that specifically addresses noise, hours of operation, events or exterior lighting for commercial venues. Each neighboring peer town below has at least one such mechanism, but they differ:</p>
+                <ul>
+                    <li>Some set numeric limits (Castine on noise, Blue Hill and Brooklin on lighting).</li>
+                    <li>Some use general standards applied case by case (Orland, Surry, Brooksville).</li>
+                    <li>Sedgwick’s closing times apply only to venues with a special amusement permit.</li>
+                </ul>
+            </div>
+
+            <!-- Penobscot Verbatim Reference Text -->
+            <div class="excerpt-appendix">
+                <div class="excerpt-appendix-title">Penobscot Verbatim Ordinance Text &amp; BABLO Correspondence (penobscotmaine.org)</div>
+
+                <div class="excerpt-item">
+                    <h4>Maine BABLO Guidance (Oct. 23, 2026)</h4>
+                    <p><strong>Question (Oct. 22, 2026):</strong> "Are licenses for on-premises alcohol consumption limited by local population at all? In other words, will the bureau license as many bars or alcohol-serving restaurants as there are qualified applicants, regardless of the population of the town?"<br>
+                    <strong>Response from Sara Morey, Licensing and Tax Supervisor, BABLO (Oct. 23, 2026):</strong> "The bureau has not established a population-based limit on the number of on-premises liquor licenses that may be issued within a municipality. The Bureau may issue licenses to qualified applicants, provided all applicable state and local licensing requirements are met. Under 28-A M.R.S. §1051(1)-(2), the Bureau may issue licenses for on-premises consumption to qualified applicants, subject to approval by the municipality in which the establishment is located. Additionally, 28-A M.R.S. §653(2) outlines the grounds upon which a municipality may deny a liquor license application, including noncompliance with local zoning ordinances, health and safety concerns, and other specified conditions. While there is no population-based restriction, each application is reviewed individually for compliance with applicable licensing requirements. The municipality must also permit the requested license type under Maine's local option laws."</p>
+                </div>
+
+                <div class="excerpt-item">
+                    <h4>Land Use Regulation — Section 5: Uses</h4>
+                    <p>Land Uses permitted in each District, in conformance with the Land Use Standards of this Ordinance, are shown below:<br>
+                    KEY: Yes - Allowed (no permit required) | No - Prohibited | PB Permit - Requires permit issued by the Planning Board | CEO Permit - Requires permit from Code Enforcement Officer | * - Subject to specific Land Use Standards, Section 6.<br>
+                    <strong>13. Principle Structures* — Commercial Structures *:</strong> Resource Protection: No | Limited Residential-Recreational: No | General: PB Permit.<br>
+                    <strong>Note:</strong> The present Ordinance prohibits commercial structures or activities in the Resource Protection and Limited Residential-Recreation Districts. This will still be effective.</p>
+                </div>
+
+                <div class="excerpt-item">
+                    <h4>Land Use Regulation — Section 6.L: Soils</h4>
+                    <p><strong>L. Soils. 1.</strong> All land uses shall be located on soils in or upon which the proposed uses or structures can be established or maintained without causing adverse environmental impacts, including severe erosion, mass soil movement, and water pollution, whether during or after construction. Proposed used requiring subsurface waste disposal, and commercial or industrial development and other similar intensive land used, shall require a soils report, prepared by a State-certified soil scientist or geologist based on an on-site investigation. Suitability considerations shall be based primarily on criteria employed in the National Cooperative Soil Survey as modified by on-site factors such as depth to water table and depth to refusal.</p>
+                </div>
+
+                <div class="excerpt-item">
+                    <h4>Land Use Regulation — Section 12.B: Permits (Subsections 6 &amp; 7)</h4>
+                    <p><strong>6. Permits Issued by Planning Board:</strong> The Planning Board shall approve or deny those applications on which it is empowered to act as stated in this Ordinance. The Planning Board may, after the submission of a complete application including all information requested, grant a permit if it makes a positive finding based on the information presented to it that, except as specifically exempted in this Ordinance, the proposed use: (a) Will not result in unsafe or unhealthful conditions; (b) Will not result in erosion or sedimentation; (c) Will not result in water pollution; (d) Will not result in damage to spawning grounds, fish, aquatic life, bird and other wildlife habitat; (e) Will conserve shoreland vegetation; (f) Will conserve visual points of access to waters as viewed from public facilities; (g) Will conserve actual points of public access to waters; (h) Will conserve natural beauty; (i) Will avoid problems associated with flood plan development and use; (j) Is in conformance with the provisions of Section 6, Land Use Standard.<br>
+                    <strong>7. Conditions:</strong> Permits granted under this Section may be made subject to reasonable conditions to ensure conformity with the purposes and provisions of this Ordinance.</p>
+                </div>
+
+                <div class="excerpt-item">
+                    <h4>Land Use Regulation — Section 7: Structures (7.5, 7.10 &amp; 7.11)</h4>
+                    <p><strong>7.5</strong> There shall be a 20 foot setback on the side lot lines and rear lot lines of all structures in any District.<br>
+                    <strong>7.10</strong> There shall be no commercial establishments within the bounds of the Shore-land District or within the bounds of sub-divisions for residential purposes.<br>
+                    <strong>7.11</strong> Professional offices such as doctors, lawyers, insurance agents, dentists, optometrists, beauty parlors are the only type allowed in sub-division for residential purposes or the Shoreland District.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PART II: AT-A-GLANCE COMPARISON TABLE -->
+        <section class="page-break-before">
+            <h2 class="part-header">Overview Comparison: Penobscot &amp; Neighboring Towns</h2>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Town</th>
+                            <th>Site Plan / Commercial Review</th>
+                            <th>Special Amusement / Live Music Permit</th>
+                            <th>Noise &amp; Hours Controls</th>
+                            <th>Exterior Lighting Limit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td>Penobscot</td>
+                            <td>1974 Land Use Regs (PB permit in Gen. Dev. District only)</td>
+                            <td>None</td>
+                            <td>None specified in ordinance</td>
+                            <td>None (shielded sign lights only in RP/LRR)</td>
+                        </tr>
+                        <tr>
+                            <td>Blue Hill</td>
+                            <td>2024 Commercial Site Plan Review Ordinance (CSPRO)</td>
+                            <td>Yes (1978 Special Amusement Ordinance)</td>
+                            <td>Select Board sets permitted entertainment hours</td>
+                            <td>Shielded; max 0.5 foot-candles on abutting residences</td>
+                        </tr>
+                        <tr>
+                            <td>Brooklin</td>
+                            <td>Site Plan Review Ordinance</td>
+                            <td>Regulated via Site Plan conditions</td>
+                            <td>Capped via Appendix B Noise Control standards</td>
+                            <td>Shielded; max 0.5 foot-candles at lot line</td>
+                        </tr>
+                        <tr>
+                            <td>Brooksville</td>
+                            <td>Special Amusement Permit Regulations</td>
+                            <td>Yes (Public hearing + 300 ft abutter mail notice)</td>
+                            <td>Must muffle noise; prohibits loud/excessive nuisance</td>
+                            <td>Addressed under general nuisance protections</td>
+                        </tr>
+                        <tr>
+                            <td>Castine</td>
+                            <td>Zoning Ordinance Commercial Standards</td>
+                            <td>Yes (plus strict Zoning standards)</td>
+                            <td>Max 60 dBA (7am–10pm); Max 50 dBA (10pm–7am)</td>
+                            <td>Downward/shielded; max 0.3 foot-candles at lot line</td>
+                        </tr>
+                        <tr>
+                            <td>Orland</td>
+                            <td>Site Plan Review Ordinance</td>
+                            <td>Regulated via Site Plan review</td>
+                            <td>Hours &amp; noise must minimize neighbor impact</td>
+                            <td>Must minimize glare and reflection on neighbors</td>
+                        </tr>
+                        <tr>
+                            <td>Sedgwick</td>
+                            <td>Site Plan Review Ordinance</td>
+                            <td>Yes (Special Amusement Permit Ordinance)</td>
+                            <td>Amusement curfew: 9:00 PM outdoor / 11:00 PM indoor</td>
+                            <td>Screening/setbacks required for adverse impacts</td>
+                        </tr>
+                        <tr>
+                            <td>Surry</td>
+                            <td>Unified Development Ordinance (UDO)</td>
+                            <td>Regulated via UDO commercial standards</td>
+                            <td>Mandatory 30-ft vegetative/fenced buffer strip</td>
+                            <td>"Dark skies" lighting required to protect neighbors</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- PART III: NEIGHBORING TOWN DETAILS -->
+            <h2 class="part-header">Neighboring Town Ordinance Summaries &amp; Excerpts</h2>
+
+            <!-- 1. BLUE HILL -->
+            <div class="town-section">
+                <div class="town-header">
+                    <h2>Blue Hill</h2>
+                    <span class="town-url">Official Website: bluehillme.gov</span>
+                </div>
+                <p class="town-intro">Blue Hill regulates bars and restaurants through a combination of its 2024 Commercial Site Plan Review Ordinance (CSPRO) and a 1978 Special Amusement Ordinance. These rules give the town authority to manage high-impact development and place conditions on venues that serve alcohol and host live entertainment.</p>
+                <div class="summary-grid">
+                    <div class="topic-block">
+                        <h4>Live Entertainment &amp; Hours</h4>
+                        <span class="ref-label">REF: SPECIAL AMUSEMENT ORDINANCE SECTIONS 201 &amp; 204</span>
+                        <p>Any on-premises liquor licensee hosting music, dancing, or entertainment must obtain a Special Amusement Permit. The Select Board can set written rules specifying permitted hours of operation, facility size, and location to protect public welfare.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Traffic and Safety Access</h4>
+                        <span class="ref-label">REF: CSPRO SECTION 6.B</span>
+                        <p>The layout must provide safe vehicular and pedestrian movement. Clear access routes must be maintained for emergency vehicles, and parking designs must prevent vehicles from backing out onto a street.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Lot Line Lighting</h4>
+                        <span class="ref-label">REF: CSPRO SECTION 6.E.2</span>
+                        <p>Lighting must be shielded so elements are not visible to motorists or abutters. Illumination cannot exceed 0.5 foot-candles upon residences on abutting lots, preventing patio and parking lights from becoming a nuisance.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Emissions and Odors</h4>
+                        <span class="ref-label">REF: CSPRO SECTION 6.E.1</span>
+                        <p>The ordinance prohibits emissions that pose an unreasonable risk and explicitly forbids land uses from producing unreasonable, offensive, or harmful odors perceptible beyond the property lines.</p>
+                    </div>
+                </div>
+                <div class="excerpt-appendix">
+                    <div class="excerpt-appendix-title">Blue Hill Ordinance Excerpts</div>
+                    <div class="excerpt-item">
+                        <h4>Special Amusement Ordinance — Section 201 (Permit Required) &amp; Section 204 (Rules and Regulations)</h4>
+                        <p><strong>Sec. 201:</strong> No licensee for the sale of liquor to be consumed on his licensed premises shall permit, on his licensed premises, any music, except radio or other mechanical device, any dancing or entertainment of any sort unless the licensee shall have first obtained from the municipality... a special amusement permit...<br>
+                        <strong>Sec. 204:</strong> The municipal officers are hereby authorized... to establish written rules and regulations governing the issuance, suspension, and revocation of special amusement permits... These rules and regulations may specifically determine the location and size of permitted premises, the facilities that may be required... and the hours during which the permitted activities are permitted.</p>
+                    </div>
+                    <div class="excerpt-item">
+                        <h4>CSPRO — Section 6.B (Traffic), Section 6.E.2 (Lighting) &amp; Section 6.E.1 (Emissions)</h4>
+                        <p><strong>Sec. 6.B:</strong> The layout of the site shall provide for the safe movement of passenger, service, and emergency vehicles... Clear routes of access shall be provided and maintained for emergency vehicles to all portions of the site... The layout and design of access ways and parking areas shall prevent their backing out onto a street.<br>
+                        <strong>Sec. 6.E.2:</strong> No land use activity shall be permitted to produce unreasonable glare or brightness beyond the lot lines. Lighting fixtures shall be shielded or hooded so that the lighting elements are not exposed to normal view of motorists, pedestrians, or buildings on abutting lots. Direct or indirect illumination shall not exceed 0.5 foot-candles upon residences on abutting lots.<br>
+                        <strong>Sec. 6.E.1:</strong> Emissions of dust, dirt, fly ash, fumes, vapors or gases which pose an unreasonable risk of harm to human health or the environment shall be prohibited. No land use activity shall be permitted to produce unreasonable, offensive, or harmful odors perceptible beyond the lot lines, measured either at ground or habitable elevations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. BROOKLIN -->
+            <div class="town-section">
+                <div class="town-header">
+                    <h2>Brooklin</h2>
+                    <span class="town-url">Official Website: brooklinmaine.com</span>
+                </div>
+                <p class="town-intro">The Brooklin Site Plan Review Ordinance strictly regulates bars and restaurants as "new nonresidential uses" through commercial performance standards. The Planning Board holds the authority to attach specific operational conditions to a permit to ensure a proposed venue meets these baseline criteria.</p>
+                <div class="summary-grid">
+                    <div class="topic-block">
+                        <h4>Noise Limits</h4>
+                        <span class="ref-label">REF: SITE PLAN SECTION 9.23</span>
+                        <p>Uses generating noise must be designed and landscaped to minimize interference with neighbors. The ordinance explicitly caps noise levels by enforcing the commercial standards set in Appendix B of Brooklin's Wind Energy Facility Ordinance.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Traffic and Safety Access</h4>
+                        <span class="ref-label">REF: SITE PLAN SECTIONS 9.2 &amp; 9.3</span>
+                        <p>The applicant must obtain a letter from the Fire Chief confirming adequate emergency access. Access points must meet DOT sight distances and cannot be placed within 50 feet of an intersection. The Institute of Traffic Engineers manual classifies dining/drinking places as high-trip generators, meaning a busy venue could trigger stricter traffic mitigation or shared access requirements.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Lot Line Lighting</h4>
+                        <span class="ref-label">REF: SITE PLAN SECTION 9.22</span>
+                        <p>Exterior lighting must be shielded from neighboring properties and the street. Light spillover cannot exceed 0.5 foot-candles at the property line, strictly limiting bright outdoor patio or parking lot lighting from intruding on residential abutters.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Commercial Setbacks</h4>
+                        <span class="ref-label">REF: SITE PLAN SECTION 9.1</span>
+                        <p>The building must be set back at least 25 feet from town roads, 50 feet from state highways, and 15 feet from side and rear property lines. The building height cannot exceed 35 feet.</p>
+                    </div>
+                </div>
+                <div class="excerpt-appendix">
+                    <div class="excerpt-appendix-title">Brooklin Ordinance Excerpts</div>
+                    <div class="excerpt-item">
+                        <h4>Section 9.1 (Utilization of the Site) &amp; Sections 9.2 / 9.3 (Road System &amp; Access)</h4>
+                        <p><strong>Sec. 9.1:</strong> Buildings must be set back at least twenty five (25) feet from the edge of traveled portions of existing town ways and fifty (50) feet from the edge of traveled portions of a state highway, and must have minimum side and rear lot setbacks of fifteen (15) feet. Buildings shall not exceed thirty-five (35) feet in height.<br>
+                        <strong>Sec. 9.2 &amp; 9.3:</strong> Vehicular access to the site must be on roads which have adequate capacity... The applicant must have a letter from the Brooklin Fire Chief stating that the development meets the needs of the Fire Department. Points of access and egress must be located to avoid hazardous conflicts... Private entrances/exits must be located at least fifty (50) feet from the closest intersection.</p>
+                    </div>
+                    <div class="excerpt-item">
+                        <h4>Section 9.22 (Exterior Lighting) &amp; Section 9.23 (Noise)</h4>
+                        <p><strong>Sec. 9.22:</strong> Lighting fixtures shall be shielded or hooded so that the lighting elements are not exposed to normal view of motorists, pedestrians or buildings on abutting properties. Direct or indirect illumination shall not exceed 0.5 foot-candles at the lot line.<br>
+                        <strong>Sec. 9.23:</strong> Land uses involving noise in excess of that which is normal for the area are designed and landscaped to minimize noise interference with neighboring uses. Noise emanating from the proposed use shall not exceed the standards set forth in Appendix B "Noise Control" of the Town of Brooklin Wind Energy Facility Ordinance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. BROOKSVILLE -->
+            <div class="town-section">
+                <div class="town-header">
+                    <h2>Brooksville</h2>
+                    <span class="town-url">Official Website: brooksvillemaine.org</span>
+                </div>
+                <p class="town-intro">Brooksville manages commercial venues serving alcohol directly through its comprehensive Special Amusement Permit Regulations, which impose strict noise and nuisance controls on any facility hosting live entertainment.</p>
+                <div class="summary-grid">
+                    <div class="topic-block">
+                        <h4>Live Entertainment &amp; Noise</h4>
+                        <span class="ref-label">REF: SPECIAL AMUSEMENT REGS SECTIONS 13 &amp; 15</span>
+                        <p>Any on-premises liquor licensee hosting music or entertainment must obtain a Special Amusement Permit. The applicant must explicitly demonstrate the ability to prevent the emanation of excessive noise, and sources of noise must be muffled so as not to be objectionable.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Nuisance Control</h4>
+                        <span class="ref-label">REF: SPECIAL AMUSEMENT REGS SECTION 16</span>
+                        <p>The ordinance explicitly forbids licensees from permitting the use of the premises to result in any continued, excessive or loud noise that endangers the comfort, repose, health, or safety of individuals, or which disturbs the peace and tranquility of the neighborhood.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Public Notice &amp; Abutters</h4>
+                        <span class="ref-label">REF: SPECIAL AMUSEMENT REGS SECTION 3</span>
+                        <p>Before a permit is granted, the Selectmen must hold a public hearing. All owners of land within 300 feet of the applicant's premises must receive written notice via first class mail.</p>
+                    </div>
+                </div>
+                <div class="excerpt-appendix">
+                    <div class="excerpt-appendix-title">Brooksville Ordinance Excerpts</div>
+                    <div class="excerpt-item">
+                        <h4>Special Amusement Permit Regulations — Sections 3, 13, 15 &amp; 16</h4>
+                        <p><strong>Sec. 3 (Permit Required):</strong> Within fifteen (15) days of receiving a request for a Special Amusement Permit the Selectmen shall hold a public hearing... Prior to the hearing reasonable notice of same shall be given to all owners of land within three hundred feet (300') of the applicant's premises... written notice sent by first class United States mail...<br>
+                        <strong>Sec. 13 &amp; 15 (Noise):</strong> An applicant for a Special Amusement Permit hereunder shall, as part of his or her application, demonstrate the ability to prevent the emanation of excessive noise from the premises sought to be licensed... Sources of noise shall be required to be muffled so as not to be objectionable due to intermittence, beat, frequency, shrillness, intensity or volume.<br>
+                        <strong>Sec. 16 (Nuisance):</strong> The licensee or his or her authorized representative shall not permit the use of the premises to result in any continued, excessive or loud [noise] or endangers the comfort, repose, health or safety of individuals, or which results in disturbing the peace and tranquility of the neighborhood.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. CASTINE -->
+            <div class="town-section">
+                <div class="town-header">
+                    <h2>Castine</h2>
+                    <span class="town-url">Official Website: castine.me.us</span>
+                </div>
+                <p class="town-intro">Castine subjects commercial developments to rigorous performance standards outlined in its Zoning Ordinance, ensuring that high-impact venues like restaurants and bars do not degrade the historic and residential fabric of the town.</p>
+                <div class="summary-grid">
+                    <div class="topic-block">
+                        <h4>Strict Noise Decibel Limits</h4>
+                        <span class="ref-label">REF: ZONING ORDINANCE SECTION 6.21</span>
+                        <p>Castine explicitly caps unreasonable noise at the lot lines. Noise cannot exceed 60 dBA from 7:00 a.m. to 10:00 p.m., and is restricted to 50 dBA from 10:00 p.m. to 7:00 a.m.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Parking Ratios</h4>
+                        <span class="ref-label">REF: ZONING ORDINANCE SECTION 6.22.B.12</span>
+                        <p>Restaurants and cocktail lounges must provide adequate off-street parking, calculated at one (1) space for every four (4) customer seats, plus one (1) space for every two (2) employees.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Lighting Limitations</h4>
+                        <span class="ref-label">REF: ZONING ORDINANCE SECTION 6.14</span>
+                        <p>No land use may produce unreasonable glare beyond its lot lines. Light spillover cannot exceed 0.3 foot-candles. Where practicable, lighting must be directed downward and the light source must be shielded.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Fire Hazard Mitigation</h4>
+                        <span class="ref-label">REF: ZONING ORDINANCE SECTION 6.9</span>
+                        <p>Commercial district uses require written approval from the Fire Chief. There must be unobstructed access for fire trucks and ambulances, and an adequate water supply for fire suppression must be available.</p>
+                    </div>
+                </div>
+                <div class="excerpt-appendix">
+                    <div class="excerpt-appendix-title">Castine Ordinance Excerpts</div>
+                    <div class="excerpt-item">
+                        <h4>Zoning Ordinance — Sections 6.9, 6.14, 6.21 &amp; 6.22</h4>
+                        <p><strong>Sec. 6.9 (Fire Hazard Mitigation):</strong> There shall be no change of use of a structure and no structure shall be built, moved, replaced, altered or enlarged without consultation with and approval in writing by the Fire Chief... Fire trucks and ambulances shall have unobstructed access to the structure... Adequate water supply for fire suppression is or will be available prior to granting a certificate of occupancy.<br>
+                        <strong>Sec. 6.14 (Lighting):</strong> No land use or establishment shall be permitted to produce unreasonable glare or brightness (0.3 foot-candles) beyond its lot lines. Where practicable, lighting shall be directed downward and the light source shall be shielded. All exterior lighting shall be designed to ensure safe movement of people and vehicles, and to minimize adverse impact on neighboring properties...<br>
+                        <strong>Sec. 6.21 (Noise):</strong> No land use or establishment shall be permitted to produce unreasonable noise perceptible beyond their lot lines... Unreasonable noise shall be noise exceeding the following levels measured on an ANSI Type 1 or 2 meter using the A-weighted network: 7:00 a.m. to 10:00 p.m. - 60 dBA; 10:00 p.m. to 7:00 a.m. - 50 dBA.<br>
+                        <strong>Sec. 6.22 (Off-Street Parking B.12):</strong> Restaurants and cocktail lounges: one (1) space for each four (4) customer seats, plus one (1) space for each two (2) employees.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. ORLAND -->
+            <div class="town-section">
+                <div class="town-header">
+                    <h2>Orland</h2>
+                    <span class="town-url">Official Website: orlandme.org</span>
+                </div>
+                <p class="town-intro">Orland utilizes a comprehensive Site Plan Review Ordinance to evaluate nonresidential construction and uses. The Planning Board strictly evaluates traffic, parking, and neighbor impacts before granting approvals.</p>
+                <div class="summary-grid">
+                    <div class="topic-block">
+                        <h4>Operational &amp; Impact Controls</h4>
+                        <span class="ref-label">REF: SITE PLAN ORDINANCE SECTION 9.22</span>
+                        <p>All features that may have an adverse audio or visual impact on surrounding properties must have sufficient setbacks and screening. The town mandates that hours of operation, noise levels, and exterior lighting be designed specifically to minimize adverse impacts on neighboring properties.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Traffic &amp; Safety</h4>
+                        <span class="ref-label">REF: SITE PLAN ORDINANCE SECTIONS 9.2 &amp; 9.3</span>
+                        <p>Vehicular access must not cause an intersection to function below a Level of Service D. Driveways must meet MDOT sight distances, and private entrances must be located at least 50 feet from the closest unsignalized intersection.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Parking Design</h4>
+                        <span class="ref-label">REF: SITE PLAN ORDINANCE SECTION 9.6</span>
+                        <p>Parking areas with more than two spaces must be arranged so vehicles do not have to back out into the street. All parking spaces and impervious surfaces must be located at least five feet from any side or rear lot line.</p>
+                    </div>
+                </div>
+                <div class="excerpt-appendix">
+                    <div class="excerpt-appendix-title">Orland Ordinance Excerpts</div>
+                    <div class="excerpt-item">
+                        <h4>Site Plan Review Ordinance — Sections 9.2, 9.3, 9.6 &amp; 9.22</h4>
+                        <p><strong>Sec. 9.2 &amp; 9.3 (Road System &amp; Access):</strong> Vehicular access to the site must be on roads which have adequate capacity... intersections on major access routes... must function at a minimum at Level of Service D after development. Any driveway or proposed street must be designed so as to provide the minimum sight distance... Private entrances/exits must be located at least fifty (50) feet from the closest unsignalized intersection...<br>
+                        <strong>Sec. 9.6 (Parking Layout):</strong> Parking areas with more than two (2) parking spaces must be arranged so that it is not necessary for vehicles to back into the street. All parking spaces, access drives, and impervious surfaces must be located at least five (5) feet from any side or rear lot line...<br>
+                        <strong>Sec. 9.22 (Special Features):</strong> All features of the development which may have an adverse audio/visual impact on surrounding properties shall have sufficient setbacks and screening to minimize that impact. Hours of operations, noise levels and exterior lighting will be designed to minimize adverse impact on neighboring properties and public ways. Lighting shall be arranged to minimize glare and reflection on adjacent properties and the traveling public.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. SEDGWICK -->
+            <div class="town-section">
+                <div class="town-header">
+                    <h2>Sedgwick</h2>
+                    <span class="town-url">Official Website: sedgwickmaine.org</span>
+                </div>
+                <p class="town-intro">Sedgwick controls commercial venues through both a Site Plan Review Ordinance and a Special Amusement Permit Ordinance, combining land-use design standards with strict operational curfews for entertainment.</p>
+                <div class="summary-grid">
+                    <div class="topic-block">
+                        <h4>Mandatory Closing Times</h4>
+                        <span class="ref-label">REF: SPECIAL AMUSEMENT ORDINANCE SECTION 2.I.3</span>
+                        <p>For premises holding a Special Amusement Permit, all outdoor permitted activities must completely cease at 9:00 PM. All indoor permitted activities must cease at 11:00 PM.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Parking Requirements</h4>
+                        <span class="ref-label">REF: SITE PLAN ORDINANCE SECTION III.B.1</span>
+                        <p>Restaurants, eating, and drinking establishments must provide one (1) off-street parking space for every four (4) seats, plus one (1) space for every two (2) employees.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Buffer and Screening</h4>
+                        <span class="ref-label">REF: SITE PLAN ORDINANCE SECTION II.B</span>
+                        <p>Storage areas, machinery, loading areas, and utility buildings must have sufficient setbacks and screening to minimize their adverse impact on surrounding properties.</p>
+                    </div>
+                </div>
+                <div class="excerpt-appendix">
+                    <div class="excerpt-appendix-title">Sedgwick Ordinance Excerpts</div>
+                    <div class="excerpt-item">
+                        <h4>Site Plan Review Ordinance (Sections II.B, III.B.1) &amp; Special Amusement Permit Ordinance (Section 2.I.3)</h4>
+                        <p><strong>Site Plan Sec. II.B (Relationship of Proposed Building):</strong> Storage areas, building machinery, loading areas, utility buildings and similar structures shall have sufficient setbacks and screening to minimize their adverse impact on other land use within the development area and on surrounding properties.<br>
+                        <strong>Site Plan Sec. III.B.1 (Off-Street Parking):</strong> Restaurants, eating and drinking establishments: 1 parking space for every 4 seats, plus 1 space for 2 employees.<br>
+                        <strong>Special Amusement Sec. 2.I.3 (Time Limits):</strong> All outdoor permitted activities at the permitted premises shall cease at 9 pm. All indoor permitted activities at the permitted premises shall cease at 11 pm.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. SURRY -->
+            <div class="town-section" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                <div class="town-header">
+                    <h2>Surry</h2>
+                    <span class="town-url">Official Website: townofsurrymaine.com</span>
+                </div>
+                <p class="town-intro">Surry's Unified Development Ordinance (UDO) establishes rigorous site plan review standards for commercial facilities, mandating structural buffers, dark-sky lighting, and stringent parking minimums.</p>
+                <div class="summary-grid">
+                    <div class="topic-block">
+                        <h4>Noise &amp; Structural Buffers</h4>
+                        <span class="ref-label">REF: UDO SECTION IV.1</span>
+                        <p>Surry uses mandatory structural buffer strips to minimize noise and visual impacts. No commercial use may be erected unless a buffer strip at least thirty (30) feet wide is provided and maintained between any adjoining residential district or use and the commercial structure. If natural features are insufficient to buffer the noise and view, a landscaped area or a 6-foot fence is required.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Dark Skies Lighting</h4>
+                        <span class="ref-label">REF: UDO SECTION IV.14</span>
+                        <p>All exterior lighting must encourage "dark skies" and be designed to minimize adverse impacts on neighboring properties. Adverse impact is judged in terms of hours of use and potential damage to the value of adjacent properties.</p>
+                    </div>
+                    <div class="topic-block">
+                        <h4>Parking Capacity</h4>
+                        <span class="ref-label">REF: UDO SECTION IV.18</span>
+                        <p>It shall be unlawful to use any required off-street parking or loading facilities for motor vehicle repair work... No area designated as a required parking area in connection with any designated building or use shall be operated as a commercial or public parking lot... Restaurants, eating &amp; drinking establishments: 1 per 4 seats plus 1 per shift employee.</p>
+                    </div>
+                </div>
+                <div class="excerpt-appendix">
+                    <div class="excerpt-appendix-title">Surry Ordinance Excerpts</div>
+                    <div class="excerpt-item">
+                        <h4>Unified Development Ordinance (UDO) — Sections IV.1, IV.14 &amp; IV.18</h4>
+                        <p><strong>UDO Sec. IV.1 (Buffer Strips):</strong> No commercial use may be erected or any use permitted unless a buffer strip at least thirty (30) feet wide is provided and maintained between any adjoining residential district or use and the non-residential structure or use. In addition, buffer strips can be used to minimize the noise of different land uses. When natural features... do not exist or are insufficient to provide a buffer, the developer shall provide a landscaped area at least 30 feet wide. Where such landscaping is not feasible... the developer may provide a fence at least 6 feet high...<br>
+                        <strong>UDO Sec. IV.14 (Exterior Lighting):</strong> All exterior lighting shall be designed to encourage energy efficiency, to ensure safe movement of people and vehicles, and to minimize adverse impact on neighboring properties and public ways. All lighting must encourage dark skies. Adverse impact is to be judged in terms of hazards to people and vehicular traffic, and potential damage to the value of adjacent properties.<br>
+                        <strong>UDO Sec. IV.18 (Off-Street Parking):</strong> It shall be unlawful to use any required off-street parking or loading facilities for motor vehicle repair work... No area designated as a required parking area in connection with any designated building or use shall be operated as a commercial or public parking lot... Restaurants, eating &amp; drinking establishments: 1 per 4 seats plus 1 per shift employee.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="doc-footer">
+            <em>This is an independent civic website prepared by residents for informational purposes. It is not affiliated with or endorsed by the Town of Penobscot, and it has not been reviewed by an attorney.</em>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggle = document.getElementById('toggle-excerpts');
+            if (toggle) {
+                toggle.addEventListener('change', () => {
+                    document.body.classList.toggle('hide-excerpts', !toggle.checked);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
