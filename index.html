@@ -507,6 +507,15 @@
                     <h2 class="subheadline">November 20 Special Election: Authorizing Bars &amp; Restaurants in Penobscot</h2>
                     
                     <p class="intro-text">Penobscot’s Land Use Regulations (adopted 1974) require a Planning Board permit for commercial structures in the General Development District. <strong>They do not set standards for noise, hours of operation, events or exterior lighting. There is no site plan review or special amusement ordinance.</strong> Several peer towns have rules of this kind. This page compares what each town’s ordinances say.</p>
+
+                    <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem 1.5rem 1.25rem; margin-bottom: 2.25rem;">
+                        <h3 style="margin-top: 0; margin-bottom: 0.35rem; font-size: 1.15rem;">How the Vote, State Licensing &amp; Local Rules Fit Together</h3>
+                        <span class="ref-tag" style="margin-bottom: 0.85rem;">REF: <a href="penobscot-ordinance.html#bablo">BABLO GUIDANCE &amp; 28-A M.R.S. §§ 1051, 653</a></span>
+                        <p style="margin-bottom: 1rem;"><strong>What a yes vote does and doesn’t do.</strong> A yes vote on November 20 would let the State issue licenses for on-premises liquor sales in Penobscot. It would not approve any specific business or limit how many licenses can be issued. The Maine Bureau of Alcoholic Beverages and Lottery Operations (BABLO) confirmed that the State has no population-based limit on the number of on-premises licenses in a municipality.</p>
+                        <p style="margin-bottom: 1rem;"><strong>What happens next.</strong> An applicant applies to BABLO, but the initial application must first be approved by the Select Board (<a href="https://legislature.maine.gov/statutes/28-A/title28-Asec1051.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">28-A M.R.S. §1051(2)</a>, <a href="https://legislature.maine.gov/statutes/28-A/title28-Asec653.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">§653</a>). The Board must give written reasons and may deny only on grounds listed in §653(2). These include noncompliance with a local land use ordinance (§653(2)(B)), failure to comply with a municipal entertainment permit (§653(2)(D-1)), and, where required locally, server training (§653(2)(G)). If the Board takes no final action within 60 days of filing, the application is deemed approved (§653(1)(C)). A denial can be appealed to BABLO within 15 days.</p>
+                        <p style="margin-bottom: 0.85rem;"><strong>Why the ordinances matter.</strong> Generally, the Select Board can apply only the local ordinances in force when it reviews an application. Where a town has no standards for noise, local operating hours, events or lighting, those matters are not listed local-ordinance grounds for denial. Standards adopted after a licensed business is operating may not apply to it in the same way.</p>
+                        <p style="margin-bottom: 0; font-size: 0.85rem; color: #52525b;"><em>Source: Email from Sara Morey, Licensing and Tax Supervisor, BABLO Liquor Licensing and Enforcement (Oct. 23, 2026); <a href="https://legislature.maine.gov/statutes/28-A/title28-Asec1051.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">28-A M.R.S. §1051</a> and <a href="https://legislature.maine.gov/statutes/28-A/title28-Asec653.html" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">28-A M.R.S. §653</a>.</em></p>
+                    </div>
                     
                     <h3>Planning Board Permit, No Commercial Performance Standards</h3>
                     <span class="ref-tag">REF: <a href="penobscot-ordinance.html#sec5">LAND USE REGULATION SECTIONS 5, 6.L, 12-B</a></span>
@@ -697,11 +706,24 @@
 
         <footer class="site-footer">
             <em>This is an independent civic website and is not affiliated with or endorsed by the Town of Penobscot.</em>
+            <div style="margin-top: 0.65rem;">
+                <a href="#corrections" id="submit-corrections-link" style="color: var(--accent); text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(0, 86, 179, 0.3);">Submit Corrections</a>
+            </div>
         </footer>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const correctionsLink = document.getElementById('submit-corrections-link');
+            if (correctionsLink) {
+                correctionsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const addr = atob('bm9ydGhlcm5iYXluZWlnaGJvcnNAZ21haWwuY29t');
+                    const subj = encodeURIComponent('Correction / Feedback: Bars in Penobscot Vote');
+                    window.location.href = 'mailto:' + addr + '?subject=' + subj;
+                });
+            }
+
             const links = document.querySelectorAll('.tab-link');
             const mobilePills = document.querySelectorAll('.mobile-pill');
             const contents = document.querySelectorAll('.tab-content');
@@ -823,7 +845,7 @@
 
             // Intercept internal ordinance links to load via Fetch API
             document.body.addEventListener('click', async (e) => {
-                const refLink = e.target.closest('.ref-tag a');
+                const refLink = e.target.closest('.ref-tag a, a[href*="ordinance.html"]');
                 if (refLink) {
                     e.preventDefault();
                     const href = refLink.getAttribute('href');
