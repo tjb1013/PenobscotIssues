@@ -467,6 +467,7 @@
     <div class="mobile-town-strip" role="navigation" aria-label="Quick town switcher">
         <a href="#penobscot" class="mobile-pill active" data-target="penobscot">Penobscot: Gap</a>
         <a href="#penobscot-tracks" class="mobile-pill" data-target="penobscot-tracks">Penobscot: On the Table</a>
+        <a href="#penobscot-reference" class="mobile-pill" data-target="penobscot-reference">Penobscot: Law Text</a>
         <a href="#updates" class="mobile-pill" data-target="updates">Site Updates</a>
         <a href="#bluehill" class="mobile-pill" data-target="bluehill">Blue Hill</a>
         <a href="#brooklin" class="mobile-pill" data-target="brooklin">Brooklin</a>
@@ -488,6 +489,7 @@
         <ul>
             <li><a href="#penobscot" class="tab-link active" data-target="penobscot">Penobscot: The Ordinance Gap</a></li>
             <li><a href="#penobscot-tracks" class="tab-link" data-target="penobscot-tracks">Penobscot: What’s on the Table</a></li>
+            <li><a href="#penobscot-reference" class="tab-link" data-target="penobscot-reference">Penobscot: Ordinance &amp; State Law Text</a></li>
             <li><a href="#updates" class="tab-link" data-target="updates">Site Updates &amp; Revisions</a></li>
         </ul>
         <h2 style="margin-top: 2rem;">Neighboring Towns</h2>
@@ -621,6 +623,7 @@
                     
                     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
                         <a href="#penobscot-tracks" class="official-link tab-link" data-target="penobscot-tracks" style="margin-top: 0; background: var(--accent-soft); color: var(--accent); border-color: rgba(0, 86, 179, 0.2); font-weight: 600;">See Also: What’s on (and Potentially on) the Table in Penobscot &rarr;</a>
+                        <a href="#penobscot-reference" class="official-link tab-link" data-target="penobscot-reference" style="margin-top: 0;">View Penobscot Ordinance &amp; State Law Text &rarr;</a>
                         <a href="https://penobscotmaine.org/" target="_blank" class="official-link" style="margin-top: 0;">Visit Official Penobscot Website &rarr;</a>
                     </div>
                 </div>
@@ -668,8 +671,17 @@
 
                     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
                         <a href="#penobscot" class="official-link tab-link" data-target="penobscot" style="margin-top: 0; background: var(--accent-soft); color: var(--accent); border-color: rgba(0, 86, 179, 0.2); font-weight: 600;">&larr; Back to Penobscot: The Ordinance Gap</a>
+                        <a href="#penobscot-reference" class="official-link tab-link" data-target="penobscot-reference" style="margin-top: 0;">View Penobscot Ordinance &amp; State Law Text &rarr;</a>
                         <a href="https://penobscotmaine.org/" target="_blank" class="official-link" style="margin-top: 0;">Visit Official Penobscot Website &rarr;</a>
                     </div>
+                </div>
+            </section>
+
+            <!-- PENOBSCOT: ORDINANCE & STATE LAW REFERENCE -->
+            <section id="penobscot-reference" class="tab-content">
+                <div class="summary-content ordinance-viewer" id="penobscot-reference-body">
+                    <h1>Penobscot Ordinance &amp; State Licensing Reference</h1>
+                    <p>Loading reference text...</p>
                 </div>
             </section>
 
@@ -910,6 +922,7 @@
                     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem;">
                         <a href="#penobscot" class="official-link tab-link" data-target="penobscot" style="margin-top: 0; background: var(--accent-soft); color: var(--accent); border-color: rgba(0, 86, 179, 0.2); font-weight: 600;">&larr; Back to Penobscot: The Ordinance Gap</a>
                         <a href="#penobscot-tracks" class="official-link tab-link" data-target="penobscot-tracks" style="margin-top: 0;">View Penobscot: What’s on the Table &rarr;</a>
+                        <a href="#penobscot-reference" class="official-link tab-link" data-target="penobscot-reference" style="margin-top: 0;">View Penobscot Ordinance &amp; State Law Text &rarr;</a>
                     </div>
                 </div>
             </section>
@@ -1005,9 +1018,13 @@
 
                 // Reset to summary view if navigating via sidebar or town bar
                 const summary = targetSection.querySelector('.summary-content');
-                const viewer = targetSection.querySelector('.ordinance-viewer');
+                const viewer = targetSection.querySelector('.ordinance-viewer:not(.summary-content)');
                 if (summary) summary.style.display = 'block';
                 if (viewer) viewer.style.display = 'none';
+
+                if (targetId === 'penobscot-reference') {
+                    loadPenobscotReference();
+                }
 
                 if (activePill && activeTownLabel) {
                     activeTownLabel.textContent = 'Towns';
@@ -1020,6 +1037,37 @@
                     history.pushState(null, null, '#' + targetId);
                 }
                 window.scrollTo(0, 0);
+            }
+
+            let penobscotRefLoaded = false;
+            async function loadPenobscotReference() {
+                if (penobscotRefLoaded) return;
+                const container = document.getElementById('penobscot-reference-body');
+                if (!container) return;
+                try {
+                    const res = await fetch('penobscot-ordinance.html');
+                    if (!res.ok) throw new Error("HTTP " + res.status);
+                    const html = await res.text();
+                    const doc = new DOMParser().parseFromString(html, 'text/html');
+                    doc.querySelectorAll('a').forEach(a => a.setAttribute('target', '_blank'));
+                    const docBodyContent = doc.body.innerHTML.split('<footer')[0];
+                    const bottomNav = `
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--border);">
+                            <a href="#penobscot" class="official-link tab-link-inline" data-target="penobscot" style="margin-top: 0; background: var(--accent-soft); color: var(--accent); border-color: rgba(0, 86, 179, 0.2); font-weight: 600;">&larr; Back to Penobscot: The Ordinance Gap</a>
+                            <a href="#penobscot-tracks" class="official-link tab-link-inline" data-target="penobscot-tracks" style="margin-top: 0;">View Penobscot: What’s on the Table &rarr;</a>
+                        </div>
+                    `;
+                    container.innerHTML = docBodyContent + bottomNav;
+                    container.querySelectorAll('.tab-link-inline').forEach(btn => {
+                        btn.addEventListener('click', (ev) => {
+                            ev.preventDefault();
+                            activateTab(btn.getAttribute('data-target'));
+                        });
+                    });
+                    penobscotRefLoaded = true;
+                } catch (err) {
+                    console.error("Failed to load Penobscot reference:", err);
+                }
             }
 
             // Sidebar navigation logic
@@ -1047,7 +1095,8 @@
                 });
             }
 
-            // Deep link hash load logic
+            // Preload Penobscot reference and handle deep link hash load logic
+            loadPenobscotReference();
             if (window.location.hash) {
                 const targetId = window.location.hash.substring(1);
                 if (document.getElementById(targetId)) {
